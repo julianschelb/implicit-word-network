@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 def parseDocument(d_id=0, d="", entity_types=[], nlp=None):
     """
-    Parse a document. Document is sentencized and tokenized.  
+    Parse a document. Document is sentencized and tokenized.
     Also, Entities are marked.
     """
 
@@ -47,8 +47,8 @@ def parseDocument(d_id=0, d="", entity_types=[], nlp=None):
 
 def parseDocuments(D=[], entity_types=[], show_progress=True, nlp=None):
     """
-    Parse a list of documents. 
-    Documents are sentencized and tokenized.  
+    Parse a list of documents.
+    Documents are sentencized and tokenized.
     Also, Entities are marked.
     """
 
@@ -63,7 +63,7 @@ def parseDocuments(D=[], entity_types=[], show_progress=True, nlp=None):
     return D_parsed
 
 
-def createCorpMat(D=[], show_progress=True):
+def createCorpMat(D=[], remove_stopwords=True, show_progress=True):
     """
     Convert parsing results from a flat list of tokens into a nested dictionary.
     """
@@ -93,7 +93,7 @@ def createCorpMat(D=[], show_progress=True):
                 D_mat[d_id][s_id] = {}
 
         # store token in mat
-        if not t["is_stopword"] and not t["is_punctuation"]:
+        if (not t["is_stopword"] and not t["is_punctuation"]) or not remove_stopwords:
             D_mat[d_id][s_id][t_id] = t
 
     return D_mat
