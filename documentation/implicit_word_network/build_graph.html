@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>implicit_word_network.build_graph API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>implicit_word_network.build_graph</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#
+# ---------------------------------------------------------------------------- #
+#                              Build Word Network                              #
+# ---------------------------------------------------------------------------- #
+#
+# Extracting implicit word networks from a user specified
+# set of documents as described in:
+#
+#   1. Spitz, “Implicit Entity Networks: A Versatile Document Model.”
+#   2. Spitz and Gertz, “Exploring Entity-Centric Networks in Entangled News Streams.”
+#
+
+# ---------------------------------- Imports --------------------------------- #
+
+import math
+from sklearn.cluster import DBSCAN
+from tqdm import tqdm
+
+# -------------------------------- Build Graph ------------------------------- #
+
+
+def getEntitiesInDoc(d_id, D):
+    &#34;&#34;&#34;
+    Return all tokens marked as entities in document.
+    &#34;&#34;&#34;
+
+    d = D[d_id]  # Current document
+    E_d = {}  # Init entity dic
+
+    # Iterate over all sentences and tokens
+    # in document to find entity instances
+    for s_id in d.keys():
+        s = d[s_id]
+
+        for t_id in s.keys():
+            t = s[t_id]
+
+            if t[&#34;is_entity&#34;]:
+                # Add instance of entity to dictionary of entities
+                e_key = (t[&#34;text&#34;].lower(), t[&#34;entity_type&#34;])
+                if e_key not in E_d:
+                    E_d[e_key] = []
+                E_d[e_key].append(t)
+
+    return E_d
+
+
+def getSentencesInDoc(d_id, D):
+    &#34;&#34;&#34;
+    Return all sentences in document.
+    &#34;&#34;&#34;
+
+    d = D[d_id]  # Current document
+    S_d = [{&#34;d_id&#34;: d_id, &#34;s_id&#34;: s_id, &#34;type&#34;: &#34;s&#34;} for s_id in d.keys()]
+
+    return S_d
+
+
+def getTermsInSent(s):
+    &#34;&#34;&#34;
+    Return all terms in sentence.
+    &#34;&#34;&#34;
+
+    T_s = {}  # Init token dic
+
+    # Iterate over all tokens in sentence
+    # to find terms (non entities)
+    for t_id in s.keys():
+        t = s[t_id]
+
+        if not t[&#34;is_entity&#34;]:
+            # Add instance of token to dictionary
+            e_key = (t[&#34;text&#34;].lower(), t[&#34;pos&#34;])
+            if e_key not in T_s:
+                T_s[e_key] = []
+            T_s[e_key].append(t)
+
+    return T_s
+
+
+def getEntsInSent(s):
+    &#34;&#34;&#34;
+    Return all entities in sentence.
+    &#34;&#34;&#34;
+
+    E_s = {}  # Init entities dic
+
+    # Iterate over all tokens in sentence
+    # to find entities
+    for t_id in s.keys():
+        t = s[t_id]
+
+        if t[&#34;is_entity&#34;]:
+            # Add instance of entities to dictionary
+            e_key = (t[&#34;text&#34;].lower(), t[&#34;entity_type&#34;])
+            if e_key not in E_s:
+                E_s[e_key] = []
+            E_s[e_key].append(t)
+
+    return E_s
+
+
+def extendEntities(V_e, E_d):
+    &#34;&#34;&#34;
+    Merge two dictionaries of entity nodes. If necessary the instance lists are combinded.
+    &#34;&#34;&#34;
+
+    # If entity already present
+    # add list of instances
+    for e_key in E_d:
+        if e_key not in V_e:
+            V_e[e_key] = E_d[e_key]
+        else:
+            V_e[e_key].extend(E_d[e_key])
+
+
+def extendTerms(V_t, T_s):
+    &#34;&#34;&#34;
+    Merge two dictionaries of term nodes. If necessary the instance lists are combinded.
+    &#34;&#34;&#34;
+
+    # If token already present
+    # add new instances
+    for e_key in T_s:
+        if e_key not in V_t:
+            V_t[e_key] = T_s[e_key]
+        else:
+            V_t[e_key].extend(T_s[e_key])
+
+
+def linkDocToSent(d, s, Ep_d_s):
+    &#34;&#34;&#34;
+    Create edge between docuement and sentence.
+    &#34;&#34;&#34;
+
+    ep_key = (d[&#34;d_id&#34;], s[&#34;d_id&#34;], s[&#34;s_id&#34;])
+    Ep_d_s[ep_key] = {&#34;w&#34;: 1}
+
+
+def linkEntToSent(E_s, Ep_s_e):
+    &#34;&#34;&#34;
+    Create edge between entity and sentence.
+    &#34;&#34;&#34;
+
+    for t_id in E_s.keys():
+
+        t = E_s[t_id]
+        ep_key = (t[0][&#34;d_id&#34;], t[0][&#34;s_id&#34;], t[0][&#34;text&#34;].lower(), t[0][&#34;entity_type&#34;])
+        Ep_s_e[ep_key] = t
+
+
+def linkTokenToSent(T_s, Ep_s_t):
+    &#34;&#34;&#34;
+    Create edge between token and sentence.
+    &#34;&#34;&#34;
+
+    for t_id in T_s.keys():
+
+        t = T_s[t_id]
+        ep_key = (t[0][&#34;d_id&#34;], t[0][&#34;s_id&#34;], t[0][&#34;text&#34;].lower(), t[0][&#34;pos&#34;])
+        Ep_s_t[ep_key] = t
+
+
+def linkEntToTerm(E_s, T_s, Ep_e_t):
+    &#34;&#34;&#34;
+    Create edge between entity and term.
+    &#34;&#34;&#34;
+
+    # Iterate over every entity and term in sentence
+    for t_s_id, e_s_id in (
+        (t_s_id, e_s_id) for t_s_id in T_s.keys() for e_s_id in E_s.keys()
+    ):
+        t = T_s[t_s_id]
+        e = E_s[e_s_id]
+
+        # Iterate over every instance of term and entity
+        for t_i, e_i in ((t_i, e_i) for t_i in t for e_i in e):
+
+            e_key = (
+                e_i[&#34;text&#34;].lower(),
+                e_i[&#34;entity_type&#34;],
+                t_i[&#34;text&#34;].lower(),
+                t_i[&#34;pos&#34;],
+            )
+            e_instance = {&#34;entity&#34;: e_i, &#34;term&#34;: t_i}
+            if e_key not in Ep_e_t:
+                Ep_e_t[e_key] = []
+            Ep_e_t[e_key].append(e_instance)
+
+
+def linkEntToEnt(E_d, Ep_e_e, c):
+    &#34;&#34;&#34;
+    Create edge between entity and entity.
+    &#34;&#34;&#34;
+
+    # Iterate over every entity in document
+    e_1_done = []  # remember already visited entities
+    for e_1_id, e_2_id in (
+        (e_1_id, e_2_id) for e_1_id in E_d.keys() for e_2_id in E_d.keys()
+    ):
+        e_1 = E_d[e_1_id]
+        e_2 = E_d[e_2_id]
+        e_1_done.append(e_1)
+
+        if e_2 not in e_1_done:
+
+            e_key = (
+                e_1[0][&#34;text&#34;].lower(),
+                e_1[0][&#34;entity_type&#34;],
+                e_2[0][&#34;text&#34;].lower(),
+                e_2[0][&#34;entity_type&#34;],
+            )
+
+            # Iterate over every instance of both entities
+            for e_1_i, e_2_i in ((e_1_i, e_2_i) for e_1_i in e_1 for e_2_i in e_2):
+
+                delta = abs(e_1_i[&#34;s_id&#34;] - e_2_i[&#34;s_id&#34;])
+
+                if delta &lt;= c:
+                    w = math.exp(-delta)
+                    e_instance = {&#34;entity_1&#34;: e_1_i, &#34;entity_2&#34;: e_2_i, &#34;w&#34;: w}
+                    if e_key not in Ep_e_e:
+                        Ep_e_e[e_key] = []
+                    Ep_e_e[e_key].append(e_instance)
+
+
+def combineVerticies(V_d, V_s, V_e, V_t):
+    &#34;&#34;&#34;
+    Combine type specific node dictionaries into one.
+    &#34;&#34;&#34;
+
+    # Add document and sentence nodes
+    V = {&#34;documents&#34;: V_d, &#34;sentences&#34;: V_s, &#34;entities&#34;: [], &#34;terms&#34;: []}
+
+    # Add entity nodes
+    for v in V_e.values():
+        V[&#34;entities&#34;].append(
+            {
+                &#34;text&#34;: v[0][&#34;text&#34;],
+                &#34;entity_type&#34;: v[0][&#34;entity_type&#34;],
+                &#34;type&#34;: &#34;e&#34;,
+                &#34;instances&#34;: v,
+            }
+        )
+
+    # Add term nodes
+    for v in V_t.values():
+        V[&#34;terms&#34;].append(
+            {&#34;text&#34;: v[0][&#34;text&#34;], &#34;pos&#34;: v[0][&#34;pos&#34;], &#34;type&#34;: &#34;t&#34;, &#34;instances&#34;: v,}
+        )
+
+    return V
+
+
+def combindeEdges(Ep_d_s, Ep_s_e, Ep_s_t, Ep_e_t, Ep_e_e):
+    &#34;&#34;&#34;
+    Combine type specific edge dictionaries into one.
+    &#34;&#34;&#34;
+
+    # List of edges per node types
+    Ep = {
+        (&#34;d&#34;, &#34;s&#34;): [],
+        (&#34;s&#34;, &#34;e&#34;): [],
+        (&#34;s&#34;, &#34;t&#34;): [],
+        (&#34;e&#34;, &#34;t&#34;): [],
+        (&#34;e&#34;, &#34;e&#34;): [],
+    }
+
+    # Add document-sentence edges
+    for key in Ep_d_s:
+
+        e = Ep_d_s[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;d&#34;, &#34;d_id&#34;: key[0],},
+            &#34;vertex_2&#34;: {&#34;type&#34;: &#34;s&#34;, &#34;d_id&#34;: key[1], &#34;s_id&#34;: key[2]},
+            &#34;w&#34;: e[&#34;w&#34;],
+        }
+        Ep[(&#34;d&#34;, &#34;s&#34;)].append(e_new)
+
+    # Add sentence-entity edges
+    for key in Ep_s_e:
+
+        e = Ep_s_e[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;s&#34;, &#34;d_id&#34;: key[0], &#34;s_id&#34;: key[1]},
+            &#34;vertex_2&#34;: {
+                &#34;type&#34;: &#34;e&#34;,
+                &#34;text&#34;: e[0][&#34;text&#34;],
+                &#34;entity_type&#34;: e[0][&#34;entity_type&#34;],
+            },
+            &#34;instances&#34;: e,
+        }
+        Ep[(&#34;s&#34;, &#34;e&#34;)].append(e_new)
+
+    # Add sentence-term edges
+    for key in Ep_s_t:
+
+        e = Ep_s_t[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;s&#34;, &#34;d_id&#34;: key[0], &#34;s_id&#34;: key[1]},
+            &#34;vertex_2&#34;: {&#34;type&#34;: &#34;t&#34;, &#34;text&#34;: e[0][&#34;text&#34;], &#34;pos&#34;: e[0][&#34;pos&#34;],},
+            &#34;instances&#34;: e,
+        }
+        Ep[(&#34;s&#34;, &#34;t&#34;)].append(e_new)
+
+    # Add entity-term edges
+    for key in Ep_e_t:
+
+        e = Ep_e_t[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;e&#34;, &#34;text&#34;: key[0], &#34;entity_type&#34;: key[1],},
+            &#34;vertex_2&#34;: {&#34;type&#34;: &#34;t&#34;, &#34;text&#34;: key[2], &#34;pos&#34;: key[3],},
+            &#34;instances&#34;: e,
+        }
+        Ep[(&#34;e&#34;, &#34;t&#34;)].append(e_new)
+
+    # Add entity-entity edges
+    for key in Ep_e_e:
+
+        e = Ep_e_e[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;e&#34;, &#34;text&#34;: key[0], &#34;entity_type&#34;: key[1],},
+            &#34;vertex_2&#34;: {&#34;type&#34;: &#34;e&#34;, &#34;text&#34;: key[2], &#34;entity_type&#34;: key[3],},
+            &#34;instances&#34;: e,
+        }
+        Ep[(&#34;e&#34;, &#34;e&#34;)].append(e_new)
+
+    return Ep
+
+
+def buildGraph(D, c, show_progress=True):
+    &#34;&#34;&#34;
+    Extract implicit word network from corpus. Returns nodes and edges.
+    &#34;&#34;&#34;
+
+    # List of edges per node type
+    Ep_d_s = {}
+    Ep_s_e = {}
+    Ep_s_t = {}
+    Ep_e_t = {}
+    Ep_e_e = {}
+
+    # List of nodes per node type
+    V_d = []
+    V_s = []
+    V_e = {}
+    V_t = {}
+
+    # Iterate over all documents
+    for d_id in tqdm(D, desc=&#34;Documents&#34;, disable=(not show_progress)):
+
+        d = D[d_id]
+        d_i = {&#34;d_id&#34;: d_id, &#34;type&#34;: &#34;d&#34;}
+        S_d_i = getSentencesInDoc(d_id, D)  # Sentences in d
+        E_d = getEntitiesInDoc(d_id, D)  # Entities in d
+
+        # Extend list of nodes
+        V_d.append(d_i)
+        V_s.extend(S_d_i)
+        extendEntities(V_e, E_d)
+
+        # Iterate over all sentences in document
+        for s_i in S_d_i:
+
+            s = d[s_i[&#34;s_id&#34;]]
+
+            # Link document to sentence
+            linkDocToSent(d_i, s_i, Ep_d_s)
+
+            # Identify and entities in sentence
+            # and link them to sentence node
+            E_s = getEntsInSent(s)
+            linkEntToSent(E_s, Ep_s_e)
+
+            # Identify terms in sentence
+            # and extend list of token nodes
+            # and link them to sentence node
+            T_s = getTermsInSent(s)
+            extendTerms(V_t, T_s)
+            linkTokenToSent(T_s, Ep_s_t)
+
+            # Link term to entity
+            linkEntToTerm(E_s, T_s, Ep_e_t)
+
+        # Link entity to entity
+        linkEntToEnt(E_d, Ep_e_e, c)
+
+    # Construct final nodes and edges lists
+    V = combineVerticies(V_d, V_s, V_e, V_t)
+    Ep = combindeEdges(Ep_d_s, Ep_s_e, Ep_s_t, Ep_e_t, Ep_e_e)
+
+    return V, Ep
+
+
+# ------------------------------- Cluster Edges ------------------------------ #
+
+
+def constructEdgeContexts(e, D):
+    &#34;&#34;&#34;
+    Return the context of two entities occurred together.
+    &#34;&#34;&#34;
+
+    contexts = []
+
+    # Iterate over all edge instances
+    for e_i in e[&#34;instances&#34;]:
+
+        e_1 = e_i[&#34;entity_1&#34;]
+        e_2 = e_i[&#34;entity_2&#34;]
+        d = D[e_1[&#34;d_id&#34;]]  # Both entities are in the same document
+        s_id_from = min(e_1[&#34;s_id&#34;], e_2[&#34;s_id&#34;])
+        s_id_to = max(e_1[&#34;s_id&#34;], e_2[&#34;s_id&#34;])
+
+        # Build context string out of individual tokens
+        context = []
+        for s_id in range(s_id_from, s_id_to + 1):
+            s = d[s_id]
+            for t_id in s:
+                context.append(s[t_id][&#34;text&#34;])
+
+        contexts.append(&#34; &#34;.join(context))
+
+    return contexts
+
+
+def getContextEmbeddings(contexts, model):
+    &#34;&#34;&#34;
+    Use BERT to compute context embeddings.
+    &#34;&#34;&#34;
+
+    cont_embeddings = model.encode(contexts, show_progress_bar=False)
+    return cont_embeddings
+
+
+def clusterContextEmbeddings(embeddings, metric, eps, min_samples):
+    &#34;&#34;&#34;
+    Use DBSCAN to cluster context embeddings.
+    &#34;&#34;&#34;
+
+    clustering = DBSCAN(metric=metric, eps=eps, min_samples=min_samples).fit(embeddings)
+    return clustering.labels_
+
+
+def groupEdgeInstances(instances, clusters):
+    &#34;&#34;&#34;
+    Sort edge instances into clusters.
+    &#34;&#34;&#34;
+
+    # Iterate over all edge instances
+    # to group them according to clusters
+    e_i_clustered = {}
+    for i, e_i in enumerate(instances):
+        cluster = clusters[i]
+        if cluster not in e_i_clustered:
+            e_i_clustered[cluster] = []
+        e_i_clustered[cluster].append(e_i)
+
+    return [e_i for e_i in e_i_clustered.values()]
+
+
+def clusterEdges(
+    Ep, D, model=&#34;&#34;, metric=&#34;cosine&#34;, eps=0.25, min_samples=1, show_progress=True
+):
+    &#34;&#34;&#34;
+    Cluster edge instances between entities by using DBSCAN on embeddings of the context two entities occurred together.
+    &#34;&#34;&#34;
+
+    Ep_clustered = Ep.copy()
+
+    # Iterate over all edges
+    for e in tqdm(Ep_clustered[(&#34;e&#34;, &#34;e&#34;)], desc=&#34;Edges&#34;, disable=(not show_progress)):
+
+        if len(e[&#34;instances&#34;]) &gt; 1:  # Clustering if mulltiple edge instances
+
+            # Conctruct context for each edge instance
+            # compute embeddings and cluster them
+            contexts = constructEdgeContexts(e, D)
+            embeddings = getContextEmbeddings(contexts, model)
+            clusters = clusterContextEmbeddings(embeddings, metric, eps, min_samples)
+            instances_clustered = groupEdgeInstances(e[&#34;instances&#34;], clusters)
+
+        else:
+            # If edge has only one instance
+            # one cluster with one instance
+            # is created instead of clustering
+            instances_clustered = [e[&#34;instances&#34;]]
+
+        # Attach clustered instances to edge
+        e[&#34;instances_clustered&#34;] = instances_clustered
+
+    return Ep_clustered</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="implicit_word_network.build_graph.buildGraph"><code class="name flex">
+<span>def <span class="ident">buildGraph</span></span>(<span>D, c, show_progress=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract implicit word network from corpus. Returns nodes and edges.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def buildGraph(D, c, show_progress=True):
+    &#34;&#34;&#34;
+    Extract implicit word network from corpus. Returns nodes and edges.
+    &#34;&#34;&#34;
+
+    # List of edges per node type
+    Ep_d_s = {}
+    Ep_s_e = {}
+    Ep_s_t = {}
+    Ep_e_t = {}
+    Ep_e_e = {}
+
+    # List of nodes per node type
+    V_d = []
+    V_s = []
+    V_e = {}
+    V_t = {}
+
+    # Iterate over all documents
+    for d_id in tqdm(D, desc=&#34;Documents&#34;, disable=(not show_progress)):
+
+        d = D[d_id]
+        d_i = {&#34;d_id&#34;: d_id, &#34;type&#34;: &#34;d&#34;}
+        S_d_i = getSentencesInDoc(d_id, D)  # Sentences in d
+        E_d = getEntitiesInDoc(d_id, D)  # Entities in d
+
+        # Extend list of nodes
+        V_d.append(d_i)
+        V_s.extend(S_d_i)
+        extendEntities(V_e, E_d)
+
+        # Iterate over all sentences in document
+        for s_i in S_d_i:
+
+            s = d[s_i[&#34;s_id&#34;]]
+
+            # Link document to sentence
+            linkDocToSent(d_i, s_i, Ep_d_s)
+
+            # Identify and entities in sentence
+            # and link them to sentence node
+            E_s = getEntsInSent(s)
+            linkEntToSent(E_s, Ep_s_e)
+
+            # Identify terms in sentence
+            # and extend list of token nodes
+            # and link them to sentence node
+            T_s = getTermsInSent(s)
+            extendTerms(V_t, T_s)
+            linkTokenToSent(T_s, Ep_s_t)
+
+            # Link term to entity
+            linkEntToTerm(E_s, T_s, Ep_e_t)
+
+        # Link entity to entity
+        linkEntToEnt(E_d, Ep_e_e, c)
+
+    # Construct final nodes and edges lists
+    V = combineVerticies(V_d, V_s, V_e, V_t)
+    Ep = combindeEdges(Ep_d_s, Ep_s_e, Ep_s_t, Ep_e_t, Ep_e_e)
+
+    return V, Ep</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.clusterContextEmbeddings"><code class="name flex">
+<span>def <span class="ident">clusterContextEmbeddings</span></span>(<span>embeddings, metric, eps, min_samples)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Use DBSCAN to cluster context embeddings.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clusterContextEmbeddings(embeddings, metric, eps, min_samples):
+    &#34;&#34;&#34;
+    Use DBSCAN to cluster context embeddings.
+    &#34;&#34;&#34;
+
+    clustering = DBSCAN(metric=metric, eps=eps, min_samples=min_samples).fit(embeddings)
+    return clustering.labels_</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.clusterEdges"><code class="name flex">
+<span>def <span class="ident">clusterEdges</span></span>(<span>Ep, D, model='', metric='cosine', eps=0.25, min_samples=1, show_progress=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Cluster edge instances between entities by using DBSCAN on embeddings of the context two entities occurred together.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clusterEdges(
+    Ep, D, model=&#34;&#34;, metric=&#34;cosine&#34;, eps=0.25, min_samples=1, show_progress=True
+):
+    &#34;&#34;&#34;
+    Cluster edge instances between entities by using DBSCAN on embeddings of the context two entities occurred together.
+    &#34;&#34;&#34;
+
+    Ep_clustered = Ep.copy()
+
+    # Iterate over all edges
+    for e in tqdm(Ep_clustered[(&#34;e&#34;, &#34;e&#34;)], desc=&#34;Edges&#34;, disable=(not show_progress)):
+
+        if len(e[&#34;instances&#34;]) &gt; 1:  # Clustering if mulltiple edge instances
+
+            # Conctruct context for each edge instance
+            # compute embeddings and cluster them
+            contexts = constructEdgeContexts(e, D)
+            embeddings = getContextEmbeddings(contexts, model)
+            clusters = clusterContextEmbeddings(embeddings, metric, eps, min_samples)
+            instances_clustered = groupEdgeInstances(e[&#34;instances&#34;], clusters)
+
+        else:
+            # If edge has only one instance
+            # one cluster with one instance
+            # is created instead of clustering
+            instances_clustered = [e[&#34;instances&#34;]]
+
+        # Attach clustered instances to edge
+        e[&#34;instances_clustered&#34;] = instances_clustered
+
+    return Ep_clustered</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.combindeEdges"><code class="name flex">
+<span>def <span class="ident">combindeEdges</span></span>(<span>Ep_d_s, Ep_s_e, Ep_s_t, Ep_e_t, Ep_e_e)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Combine type specific edge dictionaries into one.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def combindeEdges(Ep_d_s, Ep_s_e, Ep_s_t, Ep_e_t, Ep_e_e):
+    &#34;&#34;&#34;
+    Combine type specific edge dictionaries into one.
+    &#34;&#34;&#34;
+
+    # List of edges per node types
+    Ep = {
+        (&#34;d&#34;, &#34;s&#34;): [],
+        (&#34;s&#34;, &#34;e&#34;): [],
+        (&#34;s&#34;, &#34;t&#34;): [],
+        (&#34;e&#34;, &#34;t&#34;): [],
+        (&#34;e&#34;, &#34;e&#34;): [],
+    }
+
+    # Add document-sentence edges
+    for key in Ep_d_s:
+
+        e = Ep_d_s[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;d&#34;, &#34;d_id&#34;: key[0],},
+            &#34;vertex_2&#34;: {&#34;type&#34;: &#34;s&#34;, &#34;d_id&#34;: key[1], &#34;s_id&#34;: key[2]},
+            &#34;w&#34;: e[&#34;w&#34;],
+        }
+        Ep[(&#34;d&#34;, &#34;s&#34;)].append(e_new)
+
+    # Add sentence-entity edges
+    for key in Ep_s_e:
+
+        e = Ep_s_e[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;s&#34;, &#34;d_id&#34;: key[0], &#34;s_id&#34;: key[1]},
+            &#34;vertex_2&#34;: {
+                &#34;type&#34;: &#34;e&#34;,
+                &#34;text&#34;: e[0][&#34;text&#34;],
+                &#34;entity_type&#34;: e[0][&#34;entity_type&#34;],
+            },
+            &#34;instances&#34;: e,
+        }
+        Ep[(&#34;s&#34;, &#34;e&#34;)].append(e_new)
+
+    # Add sentence-term edges
+    for key in Ep_s_t:
+
+        e = Ep_s_t[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;s&#34;, &#34;d_id&#34;: key[0], &#34;s_id&#34;: key[1]},
+            &#34;vertex_2&#34;: {&#34;type&#34;: &#34;t&#34;, &#34;text&#34;: e[0][&#34;text&#34;], &#34;pos&#34;: e[0][&#34;pos&#34;],},
+            &#34;instances&#34;: e,
+        }
+        Ep[(&#34;s&#34;, &#34;t&#34;)].append(e_new)
+
+    # Add entity-term edges
+    for key in Ep_e_t:
+
+        e = Ep_e_t[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;e&#34;, &#34;text&#34;: key[0], &#34;entity_type&#34;: key[1],},
+            &#34;vertex_2&#34;: {&#34;type&#34;: &#34;t&#34;, &#34;text&#34;: key[2], &#34;pos&#34;: key[3],},
+            &#34;instances&#34;: e,
+        }
+        Ep[(&#34;e&#34;, &#34;t&#34;)].append(e_new)
+
+    # Add entity-entity edges
+    for key in Ep_e_e:
+
+        e = Ep_e_e[key]
+        e_new = {
+            &#34;vertex_1&#34;: {&#34;type&#34;: &#34;e&#34;, &#34;text&#34;: key[0], &#34;entity_type&#34;: key[1],},
+            &#34;vertex_2&#34;: {&#34;type&#34;: &#34;e&#34;, &#34;text&#34;: key[2], &#34;entity_type&#34;: key[3],},
+            &#34;instances&#34;: e,
+        }
+        Ep[(&#34;e&#34;, &#34;e&#34;)].append(e_new)
+
+    return Ep</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.combineVerticies"><code class="name flex">
+<span>def <span class="ident">combineVerticies</span></span>(<span>V_d, V_s, V_e, V_t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Combine type specific node dictionaries into one.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def combineVerticies(V_d, V_s, V_e, V_t):
+    &#34;&#34;&#34;
+    Combine type specific node dictionaries into one.
+    &#34;&#34;&#34;
+
+    # Add document and sentence nodes
+    V = {&#34;documents&#34;: V_d, &#34;sentences&#34;: V_s, &#34;entities&#34;: [], &#34;terms&#34;: []}
+
+    # Add entity nodes
+    for v in V_e.values():
+        V[&#34;entities&#34;].append(
+            {
+                &#34;text&#34;: v[0][&#34;text&#34;],
+                &#34;entity_type&#34;: v[0][&#34;entity_type&#34;],
+                &#34;type&#34;: &#34;e&#34;,
+                &#34;instances&#34;: v,
+            }
+        )
+
+    # Add term nodes
+    for v in V_t.values():
+        V[&#34;terms&#34;].append(
+            {&#34;text&#34;: v[0][&#34;text&#34;], &#34;pos&#34;: v[0][&#34;pos&#34;], &#34;type&#34;: &#34;t&#34;, &#34;instances&#34;: v,}
+        )
+
+    return V</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.constructEdgeContexts"><code class="name flex">
+<span>def <span class="ident">constructEdgeContexts</span></span>(<span>e, D)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the context of two entities occurred together.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def constructEdgeContexts(e, D):
+    &#34;&#34;&#34;
+    Return the context of two entities occurred together.
+    &#34;&#34;&#34;
+
+    contexts = []
+
+    # Iterate over all edge instances
+    for e_i in e[&#34;instances&#34;]:
+
+        e_1 = e_i[&#34;entity_1&#34;]
+        e_2 = e_i[&#34;entity_2&#34;]
+        d = D[e_1[&#34;d_id&#34;]]  # Both entities are in the same document
+        s_id_from = min(e_1[&#34;s_id&#34;], e_2[&#34;s_id&#34;])
+        s_id_to = max(e_1[&#34;s_id&#34;], e_2[&#34;s_id&#34;])
+
+        # Build context string out of individual tokens
+        context = []
+        for s_id in range(s_id_from, s_id_to + 1):
+            s = d[s_id]
+            for t_id in s:
+                context.append(s[t_id][&#34;text&#34;])
+
+        contexts.append(&#34; &#34;.join(context))
+
+    return contexts</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.extendEntities"><code class="name flex">
+<span>def <span class="ident">extendEntities</span></span>(<span>V_e, E_d)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Merge two dictionaries of entity nodes. If necessary the instance lists are combinded.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extendEntities(V_e, E_d):
+    &#34;&#34;&#34;
+    Merge two dictionaries of entity nodes. If necessary the instance lists are combinded.
+    &#34;&#34;&#34;
+
+    # If entity already present
+    # add list of instances
+    for e_key in E_d:
+        if e_key not in V_e:
+            V_e[e_key] = E_d[e_key]
+        else:
+            V_e[e_key].extend(E_d[e_key])</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.extendTerms"><code class="name flex">
+<span>def <span class="ident">extendTerms</span></span>(<span>V_t, T_s)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Merge two dictionaries of term nodes. If necessary the instance lists are combinded.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extendTerms(V_t, T_s):
+    &#34;&#34;&#34;
+    Merge two dictionaries of term nodes. If necessary the instance lists are combinded.
+    &#34;&#34;&#34;
+
+    # If token already present
+    # add new instances
+    for e_key in T_s:
+        if e_key not in V_t:
+            V_t[e_key] = T_s[e_key]
+        else:
+            V_t[e_key].extend(T_s[e_key])</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.getContextEmbeddings"><code class="name flex">
+<span>def <span class="ident">getContextEmbeddings</span></span>(<span>contexts, model)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Use BERT to compute context embeddings.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getContextEmbeddings(contexts, model):
+    &#34;&#34;&#34;
+    Use BERT to compute context embeddings.
+    &#34;&#34;&#34;
+
+    cont_embeddings = model.encode(contexts, show_progress_bar=False)
+    return cont_embeddings</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.getEntitiesInDoc"><code class="name flex">
+<span>def <span class="ident">getEntitiesInDoc</span></span>(<span>d_id, D)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return all tokens marked as entities in document.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getEntitiesInDoc(d_id, D):
+    &#34;&#34;&#34;
+    Return all tokens marked as entities in document.
+    &#34;&#34;&#34;
+
+    d = D[d_id]  # Current document
+    E_d = {}  # Init entity dic
+
+    # Iterate over all sentences and tokens
+    # in document to find entity instances
+    for s_id in d.keys():
+        s = d[s_id]
+
+        for t_id in s.keys():
+            t = s[t_id]
+
+            if t[&#34;is_entity&#34;]:
+                # Add instance of entity to dictionary of entities
+                e_key = (t[&#34;text&#34;].lower(), t[&#34;entity_type&#34;])
+                if e_key not in E_d:
+                    E_d[e_key] = []
+                E_d[e_key].append(t)
+
+    return E_d</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.getEntsInSent"><code class="name flex">
+<span>def <span class="ident">getEntsInSent</span></span>(<span>s)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return all entities in sentence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getEntsInSent(s):
+    &#34;&#34;&#34;
+    Return all entities in sentence.
+    &#34;&#34;&#34;
+
+    E_s = {}  # Init entities dic
+
+    # Iterate over all tokens in sentence
+    # to find entities
+    for t_id in s.keys():
+        t = s[t_id]
+
+        if t[&#34;is_entity&#34;]:
+            # Add instance of entities to dictionary
+            e_key = (t[&#34;text&#34;].lower(), t[&#34;entity_type&#34;])
+            if e_key not in E_s:
+                E_s[e_key] = []
+            E_s[e_key].append(t)
+
+    return E_s</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.getSentencesInDoc"><code class="name flex">
+<span>def <span class="ident">getSentencesInDoc</span></span>(<span>d_id, D)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return all sentences in document.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getSentencesInDoc(d_id, D):
+    &#34;&#34;&#34;
+    Return all sentences in document.
+    &#34;&#34;&#34;
+
+    d = D[d_id]  # Current document
+    S_d = [{&#34;d_id&#34;: d_id, &#34;s_id&#34;: s_id, &#34;type&#34;: &#34;s&#34;} for s_id in d.keys()]
+
+    return S_d</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.getTermsInSent"><code class="name flex">
+<span>def <span class="ident">getTermsInSent</span></span>(<span>s)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return all terms in sentence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTermsInSent(s):
+    &#34;&#34;&#34;
+    Return all terms in sentence.
+    &#34;&#34;&#34;
+
+    T_s = {}  # Init token dic
+
+    # Iterate over all tokens in sentence
+    # to find terms (non entities)
+    for t_id in s.keys():
+        t = s[t_id]
+
+        if not t[&#34;is_entity&#34;]:
+            # Add instance of token to dictionary
+            e_key = (t[&#34;text&#34;].lower(), t[&#34;pos&#34;])
+            if e_key not in T_s:
+                T_s[e_key] = []
+            T_s[e_key].append(t)
+
+    return T_s</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.groupEdgeInstances"><code class="name flex">
+<span>def <span class="ident">groupEdgeInstances</span></span>(<span>instances, clusters)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sort edge instances into clusters.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def groupEdgeInstances(instances, clusters):
+    &#34;&#34;&#34;
+    Sort edge instances into clusters.
+    &#34;&#34;&#34;
+
+    # Iterate over all edge instances
+    # to group them according to clusters
+    e_i_clustered = {}
+    for i, e_i in enumerate(instances):
+        cluster = clusters[i]
+        if cluster not in e_i_clustered:
+            e_i_clustered[cluster] = []
+        e_i_clustered[cluster].append(e_i)
+
+    return [e_i for e_i in e_i_clustered.values()]</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.linkDocToSent"><code class="name flex">
+<span>def <span class="ident">linkDocToSent</span></span>(<span>d, s, Ep_d_s)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create edge between docuement and sentence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def linkDocToSent(d, s, Ep_d_s):
+    &#34;&#34;&#34;
+    Create edge between docuement and sentence.
+    &#34;&#34;&#34;
+
+    ep_key = (d[&#34;d_id&#34;], s[&#34;d_id&#34;], s[&#34;s_id&#34;])
+    Ep_d_s[ep_key] = {&#34;w&#34;: 1}</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.linkEntToEnt"><code class="name flex">
+<span>def <span class="ident">linkEntToEnt</span></span>(<span>E_d, Ep_e_e, c)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create edge between entity and entity.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def linkEntToEnt(E_d, Ep_e_e, c):
+    &#34;&#34;&#34;
+    Create edge between entity and entity.
+    &#34;&#34;&#34;
+
+    # Iterate over every entity in document
+    e_1_done = []  # remember already visited entities
+    for e_1_id, e_2_id in (
+        (e_1_id, e_2_id) for e_1_id in E_d.keys() for e_2_id in E_d.keys()
+    ):
+        e_1 = E_d[e_1_id]
+        e_2 = E_d[e_2_id]
+        e_1_done.append(e_1)
+
+        if e_2 not in e_1_done:
+
+            e_key = (
+                e_1[0][&#34;text&#34;].lower(),
+                e_1[0][&#34;entity_type&#34;],
+                e_2[0][&#34;text&#34;].lower(),
+                e_2[0][&#34;entity_type&#34;],
+            )
+
+            # Iterate over every instance of both entities
+            for e_1_i, e_2_i in ((e_1_i, e_2_i) for e_1_i in e_1 for e_2_i in e_2):
+
+                delta = abs(e_1_i[&#34;s_id&#34;] - e_2_i[&#34;s_id&#34;])
+
+                if delta &lt;= c:
+                    w = math.exp(-delta)
+                    e_instance = {&#34;entity_1&#34;: e_1_i, &#34;entity_2&#34;: e_2_i, &#34;w&#34;: w}
+                    if e_key not in Ep_e_e:
+                        Ep_e_e[e_key] = []
+                    Ep_e_e[e_key].append(e_instance)</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.linkEntToSent"><code class="name flex">
+<span>def <span class="ident">linkEntToSent</span></span>(<span>E_s, Ep_s_e)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create edge between entity and sentence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def linkEntToSent(E_s, Ep_s_e):
+    &#34;&#34;&#34;
+    Create edge between entity and sentence.
+    &#34;&#34;&#34;
+
+    for t_id in E_s.keys():
+
+        t = E_s[t_id]
+        ep_key = (t[0][&#34;d_id&#34;], t[0][&#34;s_id&#34;], t[0][&#34;text&#34;].lower(), t[0][&#34;entity_type&#34;])
+        Ep_s_e[ep_key] = t</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.linkEntToTerm"><code class="name flex">
+<span>def <span class="ident">linkEntToTerm</span></span>(<span>E_s, T_s, Ep_e_t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create edge between entity and term.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def linkEntToTerm(E_s, T_s, Ep_e_t):
+    &#34;&#34;&#34;
+    Create edge between entity and term.
+    &#34;&#34;&#34;
+
+    # Iterate over every entity and term in sentence
+    for t_s_id, e_s_id in (
+        (t_s_id, e_s_id) for t_s_id in T_s.keys() for e_s_id in E_s.keys()
+    ):
+        t = T_s[t_s_id]
+        e = E_s[e_s_id]
+
+        # Iterate over every instance of term and entity
+        for t_i, e_i in ((t_i, e_i) for t_i in t for e_i in e):
+
+            e_key = (
+                e_i[&#34;text&#34;].lower(),
+                e_i[&#34;entity_type&#34;],
+                t_i[&#34;text&#34;].lower(),
+                t_i[&#34;pos&#34;],
+            )
+            e_instance = {&#34;entity&#34;: e_i, &#34;term&#34;: t_i}
+            if e_key not in Ep_e_t:
+                Ep_e_t[e_key] = []
+            Ep_e_t[e_key].append(e_instance)</code></pre>
+</details>
+</dd>
+<dt id="implicit_word_network.build_graph.linkTokenToSent"><code class="name flex">
+<span>def <span class="ident">linkTokenToSent</span></span>(<span>T_s, Ep_s_t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create edge between token and sentence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def linkTokenToSent(T_s, Ep_s_t):
+    &#34;&#34;&#34;
+    Create edge between token and sentence.
+    &#34;&#34;&#34;
+
+    for t_id in T_s.keys():
+
+        t = T_s[t_id]
+        ep_key = (t[0][&#34;d_id&#34;], t[0][&#34;s_id&#34;], t[0][&#34;text&#34;].lower(), t[0][&#34;pos&#34;])
+        Ep_s_t[ep_key] = t</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="implicit_word_network" href="index.html">implicit_word_network</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="implicit_word_network.build_graph.buildGraph" href="#implicit_word_network.build_graph.buildGraph">buildGraph</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.clusterContextEmbeddings" href="#implicit_word_network.build_graph.clusterContextEmbeddings">clusterContextEmbeddings</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.clusterEdges" href="#implicit_word_network.build_graph.clusterEdges">clusterEdges</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.combindeEdges" href="#implicit_word_network.build_graph.combindeEdges">combindeEdges</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.combineVerticies" href="#implicit_word_network.build_graph.combineVerticies">combineVerticies</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.constructEdgeContexts" href="#implicit_word_network.build_graph.constructEdgeContexts">constructEdgeContexts</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.extendEntities" href="#implicit_word_network.build_graph.extendEntities">extendEntities</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.extendTerms" href="#implicit_word_network.build_graph.extendTerms">extendTerms</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.getContextEmbeddings" href="#implicit_word_network.build_graph.getContextEmbeddings">getContextEmbeddings</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.getEntitiesInDoc" href="#implicit_word_network.build_graph.getEntitiesInDoc">getEntitiesInDoc</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.getEntsInSent" href="#implicit_word_network.build_graph.getEntsInSent">getEntsInSent</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.getSentencesInDoc" href="#implicit_word_network.build_graph.getSentencesInDoc">getSentencesInDoc</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.getTermsInSent" href="#implicit_word_network.build_graph.getTermsInSent">getTermsInSent</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.groupEdgeInstances" href="#implicit_word_network.build_graph.groupEdgeInstances">groupEdgeInstances</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.linkDocToSent" href="#implicit_word_network.build_graph.linkDocToSent">linkDocToSent</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.linkEntToEnt" href="#implicit_word_network.build_graph.linkEntToEnt">linkEntToEnt</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.linkEntToSent" href="#implicit_word_network.build_graph.linkEntToSent">linkEntToSent</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.linkEntToTerm" href="#implicit_word_network.build_graph.linkEntToTerm">linkEntToTerm</a></code></li>
+<li><code><a title="implicit_word_network.build_graph.linkTokenToSent" href="#implicit_word_network.build_graph.linkTokenToSent">linkTokenToSent</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
