@@ -15,10 +15,7 @@ setuptools.setup(
     project_urls={
         "Bug Tracker": "https://gitlab.inf.uni-konstanz.de/julian.schelb/implicit-word-network/-/issues",
     },
-    install_requires=[  # I get to this in a second
-        "sklearn",
-        "tqdm",
-    ],
+    install_requires=["sklearn", "tqdm", "matplotlib", "networkx", "networkx_viewer",],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
