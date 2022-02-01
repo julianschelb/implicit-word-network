@@ -34,10 +34,11 @@ def parseDocument(d_id=0, d="", entity_types=[], nlp=None):
                 "t_id": t_id,
                 "text": t.text,
                 "pos": t.pos_,
+                "ent_iob": t.ent_iob_ if is_entity else "O",
                 "is_stopword": t.is_stop,
                 "is_punctuation": is_punct,
                 "is_entity": is_entity,
-                "entity_type": t.ent_type_,
+                "entity_type": t.ent_type_ if is_entity else "",
             }
 
             d_parsed.append(t_parsed)
@@ -63,15 +64,20 @@ def parseDocuments(D=[], entity_types=[], show_progress=True, nlp=None):
     return D_parsed
 
 
-def createCorpMat(D=[], remove_stopwords=True, show_progress=True):
+def createCorpMat(
+    D=[],
+    remove_stopwords=True,
+    show_progress=True,
+    compound_entities=True,
+):
     """
     Convert parsing results from a flat list of tokens into a nested dictionary.
     """
 
     D_mat = {}
 
-    d_id_prev = -1
-    s_id_prev = -1
+    d_id_prev = None
+    s_id_prev = None
 
     # iterate over all tokens in flat list
     for t in tqdm(D, desc="Tokens", disable=(not show_progress)):
@@ -85,6 +91,7 @@ def createCorpMat(D=[], remove_stopwords=True, show_progress=True):
         if d_id_prev != d_id:
             if d_id not in D_mat:
                 D_mat[d_id] = {}
+                s_id_prev = None
 
         # init emtpy sentence dict
         # if not present already
@@ -93,7 +100,22 @@ def createCorpMat(D=[], remove_stopwords=True, show_progress=True):
                 D_mat[d_id][s_id] = {}
 
         # store token in mat
-        if (not t["is_stopword"] and not t["is_punctuation"]) or not remove_stopwords:
-            D_mat[d_id][s_id][t_id] = t
+        if t["is_entity"] or (
+            (not t["is_stopword"] and not t["is_punctuation"]) or not remove_stopwords
+        ):
+
+            # Check if compound entity
+            # make this more robust (e.g. "the": stopword and beginning)
+            if not t["ent_iob"] == "I" or not compound_entities:
+                D_mat[d_id][s_id][t_id] = t
+            else:
+                t_id_prev = sorted(D_mat[d_id][s_id].keys())[-1]
+                compound_entity = D_mat[d_id][s_id][t_id_prev]
+                compound_entity["text"] = compound_entity["text"] + " " + t["text"]
+
+        # remember document id
+        # and sentence id
+        d_id_prev = d_id
+        s_id_prev = s_id
 
     return D_mat
