@@ -1,5 +1,5 @@
 import spacy as sp
-import implicit_word_network as wn
+import src.implicit_word_network as wn
 
 # Path to text file
 path = "./example/example_data.csv"
