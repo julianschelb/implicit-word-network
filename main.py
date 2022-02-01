@@ -21,3 +21,9 @@ D_mat = wn.createCorpMat(D_parsed)
 
 # Building graph ...
 V, Ep = wn.buildGraph(D_mat, c)
+
+# Convert to NetworkX object ...
+G = wn.convertToNetworkX(V, Ep)
+
+# Plot Graph
+wn.plotNetwork(G, mode="show")
