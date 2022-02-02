@@ -27,6 +27,14 @@ def convertToNetworkX(V, Ep):
     # Init graph object
     G = nx.MultiGraph()
 
+    V = V["entities"]
+
+    for v in V:
+
+        v_id = v["text"].lower() + "_" + v["entity_type"]
+        w = len(v["instances"])
+        G.add_node(v_id, weight=w)
+
     # Only entity <-> entity edges
     Ep = Ep[("e", "e")]
 
@@ -36,7 +44,7 @@ def convertToNetworkX(V, Ep):
 
         v1_id = v1["text"].lower() + "_" + v1["entity_type"]
         v2_id = v2["text"].lower() + "_" + v2["entity_type"]
-        w = sum(i["w"] for i in ep["instances"])
+        w = sum(i["w"] for i in ep["instances"]) * 0.5
 
         G.add_edge(v1_id, v2_id, weight=w)
 

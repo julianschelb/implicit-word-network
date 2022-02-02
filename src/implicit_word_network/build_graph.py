@@ -246,7 +246,12 @@ def combineVerticies(V_d, V_s, V_e, V_t):
     # Add term nodes
     for v in V_t.values():
         V["terms"].append(
-            {"text": v[0]["text"], "pos": v[0]["pos"], "type": "t", "instances": v,}
+            {
+                "text": v[0]["text"],
+                "pos": v[0]["pos"],
+                "type": "t",
+                "instances": v,
+            }
         )
 
     return V
@@ -271,7 +276,10 @@ def combindeEdges(Ep_d_s, Ep_s_e, Ep_s_t, Ep_e_t, Ep_e_e):
 
         e = Ep_d_s[key]
         e_new = {
-            "vertex_1": {"type": "d", "d_id": key[0],},
+            "vertex_1": {
+                "type": "d",
+                "d_id": key[0],
+            },
             "vertex_2": {"type": "s", "d_id": key[1], "s_id": key[2]},
             "w": e["w"],
         }
@@ -298,7 +306,11 @@ def combindeEdges(Ep_d_s, Ep_s_e, Ep_s_t, Ep_e_t, Ep_e_e):
         e = Ep_s_t[key]
         e_new = {
             "vertex_1": {"type": "s", "d_id": key[0], "s_id": key[1]},
-            "vertex_2": {"type": "t", "text": e[0]["text"], "pos": e[0]["pos"],},
+            "vertex_2": {
+                "type": "t",
+                "text": e[0]["text"],
+                "pos": e[0]["pos"],
+            },
             "instances": e,
         }
         Ep[("s", "t")].append(e_new)
@@ -308,8 +320,16 @@ def combindeEdges(Ep_d_s, Ep_s_e, Ep_s_t, Ep_e_t, Ep_e_e):
 
         e = Ep_e_t[key]
         e_new = {
-            "vertex_1": {"type": "e", "text": key[0], "entity_type": key[1],},
-            "vertex_2": {"type": "t", "text": key[2], "pos": key[3],},
+            "vertex_1": {
+                "type": "e",
+                "text": key[0],
+                "entity_type": key[1],
+            },
+            "vertex_2": {
+                "type": "t",
+                "text": key[2],
+                "pos": key[3],
+            },
             "instances": e,
         }
         Ep[("e", "t")].append(e_new)
@@ -319,8 +339,16 @@ def combindeEdges(Ep_d_s, Ep_s_e, Ep_s_t, Ep_e_t, Ep_e_e):
 
         e = Ep_e_e[key]
         e_new = {
-            "vertex_1": {"type": "e", "text": key[0], "entity_type": key[1],},
-            "vertex_2": {"type": "e", "text": key[2], "entity_type": key[3],},
+            "vertex_1": {
+                "type": "e",
+                "text": key[0],
+                "entity_type": key[1],
+            },
+            "vertex_2": {
+                "type": "e",
+                "text": key[2],
+                "entity_type": key[3],
+            },
             "instances": e,
         }
         Ep[("e", "e")].append(e_new)
