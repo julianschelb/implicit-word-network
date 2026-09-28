@@ -1164,6 +1164,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#publishing-an-already-tagged-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publishing an already tagged version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#manual-version-check" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1385,6 +1396,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#publishing-an-already-tagged-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publishing an already tagged version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#manual-version-check" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1578,6 +1600,13 @@ LociSimiles.</p>
 <p>One-time setup on PyPI (project → Publishing → add a trusted publisher):
 owner <code>julianschelb</code>, repository <code>implicit-word-network</code>, workflow
 <code>release.yml</code>, environment <code>pypi</code>.</p>
+<h3 id="publishing-an-already-tagged-version">Publishing an already tagged version<a class="headerlink" href="#publishing-an-already-tagged-version" title="Permanent link">&para;</a></h3>
+<p><code>semantic-release</code> only publishes versions it bumps itself. To publish the
+currently tagged version (for example the initial <code>v0.1.0</code> once the PyPI
+trusted publisher is registered), run the <strong>Release</strong> workflow by hand:
+Actions → Release → <em>Run workflow</em> → tick <strong>publish_current</strong>. The workflow
+builds the checked-out version, verifies that the matching tag exists and
+publishes it through the <code>pypi</code> environment.</p>
 <h3 id="manual-version-check">Manual Version Check<a class="headerlink" href="#manual-version-check" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>semantic-release<span class="w"> </span>version<span class="w"> </span>--print<span class="w">   </span><span class="c1"># preview the next version (dry run)</span>
 </code></pre></div>
