@@ -1,0 +1,127 @@
+site_name: Implicit Word Network
+site_description: Extract and explore (contextual) implicit entity networks from text corpora.
+site_url: https://julianschelb.github.io/implicit-word-network/
+repo_url: https://github.com/julianschelb/implicit-word-network
+repo_name: julianschelb/implicit-word-network
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/julianschelb/implicit-word-network
+  generator: false
+
+copyright: |
+  <a href="https://doi.org/10.1145/3487553.3524237">ECCE (WWW '22)</a> | MIT License
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            # Cleaner layout
+            show_source: false
+            show_root_heading: true
+            show_root_toc_entry: true
+            heading_level: 2
+
+            # Show type labels (class, function, etc.)
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+
+            # Hide clutter
+            show_bases: false
+            show_if_no_docstring: false
+            filters: ["!^_"]
+
+            # Flat layout (no nested categories)
+            group_by_category: false
+            members_order: source
+            show_category_heading: false
+
+            # Signatures
+            show_signature: true
+            show_signature_annotations: true
+            separate_signature: true
+            line_length: 60
+            signature_crossrefs: true
+
+            # Docstrings
+            docstring_style: google
+            docstring_section_style: spacy
+            merge_init_into_class: true
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: .
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Theory: theory.md
+  - Examples: examples.md
+  - Tutorials:
+    - Building Networks: tutorials/building-networks.md
+    - Querying Networks: tutorials/querying.md
+    - Entity Extractors: tutorials/entity-extractors.md
+    - Contextual Edges (CIEN): tutorials/contextual-edges.md
+    - Performance & Scaling: tutorials/performance.md
+    - Validation: tutorials/validation.md
+    - Migrating from 0.0.x: tutorials/migration.md
+  - CLI Reference: cli.md
+  - API Reference:
+    - Overview: api/index.md
+    - Document: api/document.md
+    - Annotation: api/annotation.md
+    - Segmentation: api/segmentation.md
+    - Extraction: api/extraction.md
+    - Network: api/network.md
+    - Context: api/context.md
+    - Pipeline: api/pipeline.md
+    - Visualization: api/visualization.md
+  - Development: development.md
+  - Changelog: changelog.md

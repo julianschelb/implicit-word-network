@@ -1,0 +1,31 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: A short, self-contained snippet (use the `GazetteerEntityExtractor` if the bug is not model-specific).
+      render: python
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Output of `python -c "import implicit_word_network, sys; print(implicit_word_network.__version__, sys.version)"` plus OS and, if relevant, spaCy/gliner versions.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Traceback / logs
+      render: shell

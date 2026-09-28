@@ -1,0 +1,117 @@
+/* Cleaner mkdocstrings output - Card layout */
+
+/* ===== Bold Headings ===== */
+.md-typeset h1 {
+  font-weight: 700;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  border-bottom: 2px solid var(--md-primary-fg-color);
+  padding-bottom: 0.3em;
+}
+
+.md-typeset h3 {
+  font-weight: 700;
+}
+
+.md-typeset h4 {
+  font-weight: 600;
+}
+
+/* ===== Type Labels (class, function, attribute) ===== */
+.doc-label {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  font-size: 0.7em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 3px;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+
+.doc-label-class {
+  background: #7c4dff;
+  color: white;
+}
+
+.doc-label-function,
+.doc-label-method {
+  background: #00bcd4;
+  color: white;
+}
+
+.doc-label-attribute {
+  background: #ff9800;
+  color: white;
+}
+
+.doc-label-module {
+  background: #4caf50;
+  color: white;
+}
+
+/* ===== Card styling for classes/functions ===== */
+.doc-object {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Nested objects (methods) - flat styling */
+.doc-children .doc-object {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0.75em 0;
+  margin-bottom: 0.5em;
+  box-shadow: none;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.doc-children .doc-object:last-child {
+  border-bottom: none;
+}
+
+/* ===== Signature styling ===== */
+.doc-signature {
+  background: var(--md-default-bg-color);
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1em 0;
+  font-size: 0.9em;
+  overflow-x: auto;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.doc-signature code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ===== Section titles (Parameters, Returns, ...) ===== */
+.doc-section-title {
+  font-size: 0.85em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--md-default-fg-color--light);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* ===== Parameter styling ===== */
+.doc-param-type {
+  font-family: var(--md-code-font-family);
+  color: var(--md-accent-fg-color);
+  font-size: 0.9em;
+}
+
+/* ===== Doc headings bold ===== */
+.doc-heading code {
+  font-weight: 700;
+}

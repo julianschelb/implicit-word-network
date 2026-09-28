@@ -1,3 +1,11 @@
 {
-    "python.formatting.provider": "black"
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": ["tests"]
 }

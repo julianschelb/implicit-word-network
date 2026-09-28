@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://julianschelb.github.io/implicit-word-network/
+    about: Tutorials, theory and the API reference.
+  - name: Security issue
+    url: https://github.com/julianschelb/implicit-word-network/security/advisories/new
+    about: Please report vulnerabilities privately.

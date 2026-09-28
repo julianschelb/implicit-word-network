@@ -157,3 +157,8 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+
+# Ruff / macOS
+.ruff_cache/
+.DS_Store
+.hypothesis/

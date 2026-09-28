@@ -1,0 +1,67 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below, together with the papers describing the model."
+type: software
+title: "Implicit Word Network"
+abstract: "A Python package for extracting and exploring (contextual) implicit entity networks from text corpora."
+authors:
+  - family-names: Schelb
+    given-names: Julian
+    affiliation: University of Konstanz
+    email: julian.schelb@uni-konstanz.de
+license: MIT
+repository-code: "https://github.com/julianschelb/implicit-word-network"
+url: "https://julianschelb.github.io/implicit-word-network/"
+version: 0.1.0
+date-released: 2026-09-28
+keywords:
+  - implicit entity networks
+  - cooccurrence networks
+  - named entity recognition
+  - corpus exploration
+references:
+  - type: conference-paper
+    title: "ECCE: Entity-centric Corpus Exploration Using Contextual Implicit Networks"
+    authors:
+      - family-names: Schelb
+        given-names: Julian
+      - family-names: Ehrmann
+        given-names: Maud
+      - family-names: Romanello
+        given-names: Matteo
+      - family-names: Spitz
+        given-names: Andreas
+    year: 2022
+    doi: 10.1145/3487553.3524237
+    conference:
+      name: "Companion Proceedings of the Web Conference 2022 (WWW '22 Companion)"
+  - type: conference-paper
+    title: "Terms over LOAD: Leveraging Named Entities for Cross-Document Extraction and Summarization of Events"
+    authors:
+      - family-names: Spitz
+        given-names: Andreas
+      - family-names: Gertz
+        given-names: Michael
+    year: 2016
+    doi: 10.1145/2911451.2911529
+    conference:
+      name: "SIGIR '16"
+  - type: conference-paper
+    title: "Exploring Entity-centric Networks in Entangled News Streams"
+    authors:
+      - family-names: Spitz
+        given-names: Andreas
+      - family-names: Gertz
+        given-names: Michael
+    year: 2018
+    doi: 10.1145/3184558.3188726
+    conference:
+      name: "Companion of the The Web Conference 2018 (WWW '18 Companion)"
+  - type: thesis
+    title: "Implicit Entity Networks: A Versatile Document Model"
+    authors:
+      - family-names: Spitz
+        given-names: Andreas
+    year: 2019
+    doi: 10.11588/HEIDOK.00026328
+    institution:
+      name: Heidelberg University
