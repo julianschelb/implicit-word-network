@@ -285,3 +285,14 @@ class TestSpacyEntityExtractor:
         docs = SpacyEntityExtractor(spacy_nlp).annotate_all(texts, batch_size=2)
         assert [d.id for d in docs] == [0, 1, 2, 3]
         assert all(d.n_sentences > 0 for d in docs)
+
+
+@pytest.mark.spacy
+def test_spacy_extractor_max_length():
+    pytest.importorskip("spacy")
+    extractor = SpacyEntityExtractor("en_core_web_sm", max_length=3_000_000)
+    try:
+        nlp = extractor.nlp
+    except OSError:  # pragma: no cover
+        pytest.skip("en_core_web_sm not installed")
+    assert nlp.max_length >= 3_000_000

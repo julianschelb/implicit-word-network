@@ -138,3 +138,18 @@ class TestSpacySegmenter:
             pytest.skip("en_core_web_sm not installed")
         assert nlp.has_pipe("parser") or nlp.has_pipe("senter") or nlp.has_pipe("sentencizer")
         assert not nlp.has_pipe("ner")
+
+
+@pytest.mark.spacy
+class TestSpacyMaxLength:
+    def test_max_length_is_raised(self):
+        pytest.importorskip("spacy")
+        from implicit_word_network.segmentation.spacy import load_spacy_model
+
+        try:
+            nlp = load_spacy_model("en_core_web_sm", disable=("ner",), max_length=5_000_000)
+        except OSError:  # pragma: no cover
+            pytest.skip("en_core_web_sm not installed")
+        assert nlp.max_length >= 5_000_000
+        segmenter = SpacySegmenter("en_core_web_sm", max_length=2_000_000)
+        assert segmenter.max_length == 2_000_000

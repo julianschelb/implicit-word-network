@@ -515,3 +515,112 @@ class TestCustomisation:
 
     def test_default_norm_helper(self):
         assert default_norm("  Richard   Feynman ") == "richard feynman"
+
+
+# ============== Bulk accessors & engine internals ==============
+
+
+class TestBulkAccessors:
+    def test_edge_table_matches_edges(self, network):
+        rows, cols, weights, counts = network.edge_table()
+        edges = network.edges()
+        assert rows.tolist() == [e.source.id for e in edges]
+        assert cols.tolist() == [e.target.id for e in edges]
+        assert weights.tolist() == pytest.approx([e.weight for e in edges])
+        assert counts.tolist() == [e.count for e in edges]
+        assert np.all(rows < cols)
+
+    def test_edge_table_top_k_partial_sort(self, network):
+        full = network.edge_table()
+        for k in (0, 1, 3, 100):
+            rows, cols, weights, counts = network.edge_table(top_k=k)
+            n = min(k, len(full[0]))
+            assert len(rows) == n
+            assert weights.tolist() == pytest.approx(full[2][:n].tolist())
+        assert network.edge_table(top_k=2, labels=["PERSON"])[0].shape == (2,)
+        assert network.edge_table(min_weight=1e9)[0].shape == (0,)
+        assert network.edge_table(labels=["UNKNOWN"])[0].shape == (0,)
+
+    def test_cooccurrence_table_matches_objects(self, network):
+        a, b = ("Feynman", "PERSON"), ("Schwinger", "PERSON")
+        table = network.cooccurrence_table(a, b)
+        coocs = network.cooccurrences(a, b)
+        assert len(table) == len(coocs)
+        assert table.source.tolist() == [c.source.id for c in coocs]
+        assert table.target.tolist() == [c.target.id for c in coocs]
+        assert table.delta.tolist() == [c.delta for c in coocs]
+        assert table.weight.tolist() == pytest.approx([c.weight for c in coocs])
+        assert len(network.cooccurrence_table(("Tokyo", "LOC"), ("Harvard", "ORG"))) == 0
+
+    def test_iter_cooccurrences_chunks(self, network):
+        full = network.all_cooccurrences()
+        chunks = list(network.iter_cooccurrences(chunk_size=3))
+        assert len(chunks) > 1
+        assert np.concatenate([c.source for c in chunks]).tolist() == full.source.tolist()
+        assert np.concatenate([c.weight for c in chunks]).tolist() == pytest.approx(
+            full.weight.tolist()
+        )
+        assert list(ImplicitNetwork().iter_cooccurrences()) == []
+
+    def test_iter_entities(self, network):
+        assert list(network.iter_entities()) == network.entities()
+        assert list(network.iter_entities(label="LOC")) == network.entities(label="LOC")
+
+    def test_entity_label_ids(self, network):
+        ids = network.entity_label_ids()
+        labels = network.entity_labels()
+        assert ids.shape == (network.n_entities,)
+        assert {network.entities()[i].label for i in range(network.n_entities)} == set(labels)
+        for node in network.entities():
+            assert network._label_id(node.label) == ids[node.id]
+        assert network._label_id("nope") == -1
+        assert network.top_entities(3, label="nope") == []
+
+    def test_node_caches_are_reset_on_update(self, extractor):
+        network = ImplicitNetwork(NetworkConfig(window=1))
+        network.add_documents(extractor.annotate_all([Document("Feynman met Schwinger.", "a")]))
+        before = network.entity("Feynman", "PERSON")
+        assert before.count == 1
+        network.add_documents(extractor.annotate_all([Document("Feynman again.", "b")]))
+        after = network.entity("Feynman", "PERSON")
+        assert after.count == 2 and before.count == 1
+        assert network.sentence(1).document == "b"
+
+    def test_bulk_allocation_restores_gc(self):
+        import gc
+
+        from implicit_word_network.network.graph import _bulk_allocation
+
+        assert gc.isenabled()
+        with _bulk_allocation():
+            assert not gc.isenabled()
+        assert gc.isenabled()
+        gc.disable()
+        try:
+            with _bulk_allocation():
+                pass
+            assert not gc.isenabled()
+        finally:
+            gc.enable()
+
+    def test_context_of_span(self, network):
+        assert (
+            network.context_of_span(0, 1)
+            == network.sentence(0).text + " " + network.sentence(1).text
+        )
+        no_text = ImplicitNetwork(NetworkConfig(store_text=False))
+        with pytest.raises(RuntimeError):
+            no_text.context_of_span(0, 0)
+
+    def test_many_small_updates_match_one_shot(self, extractor, texts):
+        docs = extractor.annotate_all(texts * 5, batch_size=64)
+        for i, doc in enumerate(docs):
+            doc.id = i
+        one_shot = ImplicitNetwork.from_documents(docs)
+        incremental = ImplicitNetwork()
+        for doc in docs:
+            incremental.add_documents([doc])
+            _ = incremental.n_edges  # force compaction in between updates
+        assert abs(incremental.entity_entity_matrix - one_shot.entity_entity_matrix).sum() == 0
+        assert abs(incremental.entity_term_matrix - one_shot.entity_term_matrix).sum() == 0
+        assert incremental.entity_counts().tolist() == one_shot.entity_counts().tolist()
