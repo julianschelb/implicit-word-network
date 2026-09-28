@@ -1600,6 +1600,10 @@ LociSimiles.</p>
 <p>One-time setup on PyPI (project → Publishing → add a trusted publisher):
 owner <code>julianschelb</code>, repository <code>implicit-word-network</code>, workflow
 <code>release.yml</code>, environment <code>pypi</code>.</p>
+<p>The <code>pypi</code> GitHub environment requires a review before every upload and only
+accepts deployments from <code>main</code>: when a release is pending, open the run under
+<em>Actions</em>, click <strong>Review deployments</strong>, tick <code>pypi</code> and approve. Until then the
+GitHub release and tag already exist; only the PyPI upload waits.</p>
 <h3 id="publishing-an-already-tagged-version">Publishing an already tagged version<a class="headerlink" href="#publishing-an-already-tagged-version" title="Permanent link">&para;</a></h3>
 <p><code>semantic-release</code> only publishes versions it bumps itself. To publish the
 currently tagged version (for example the initial <code>v0.1.0</code> once the PyPI
