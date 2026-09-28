@@ -132,6 +132,11 @@ One-time setup on PyPI (project → Publishing → add a trusted publisher):
 owner `julianschelb`, repository `implicit-word-network`, workflow
 `release.yml`, environment `pypi`.
 
+The `pypi` GitHub environment requires a review before every upload and only
+accepts deployments from `main`: when a release is pending, open the run under
+*Actions*, click **Review deployments**, tick `pypi` and approve. Until then the
+GitHub release and tag already exist; only the PyPI upload waits.
+
 ### Publishing an already tagged version
 
 `semantic-release` only publishes versions it bumps itself. To publish the
