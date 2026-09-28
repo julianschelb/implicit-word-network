@@ -1145,14 +1145,16 @@
 
 
 <a href="#implicit_word_network.visualization.plot_network" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">plot_network</span><span class="p">(</span><span class="n">network</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            implicit_word_network.network.graph.ImplicitNetwork" href="../network/#implicit_word_network.network.graph.ImplicitNetwork">ImplicitNetwork</a></span> <span class="o">|</span> <span class="n"><span title="networkx.Graph">Graph</span></span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">min_weight</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">top_k</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n"><span title="typing.Any">Any</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">=</span> <span class="s1">'spring'</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">node_scale</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">=</span> <span class="mf">120.0</span><span class="p">,</span> <span class="n">edge_scale</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">with_labels</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">font_size</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">output_path</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="typing.Any">Any</span></span>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">plot_network</span><span class="p">(</span><span class="n">network</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            implicit_word_network.network.graph.ImplicitNetwork" href="../network/#implicit_word_network.network.graph.ImplicitNetwork">ImplicitNetwork</a></span> <span class="o">|</span> <span class="n"><span title="networkx.Graph">Graph</span></span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">min_weight</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">top_k</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">label_order</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_component_size</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n"><span title="typing.Any">Any</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">layout</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">=</span> <span class="s1">'spring'</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">node_size</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="float">float</span></span><span class="p">,</span> <span class="n"><span title="float">float</span></span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">90.0</span><span class="p">,</span> <span class="mf">1100.0</span><span class="p">),</span> <span class="n">edge_width</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="float">float</span></span><span class="p">,</span> <span class="n"><span title="float">float</span></span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">),</span> <span class="n">with_labels</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">max_labels</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">font_size</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">=</span> <span class="mf">8.5</span><span class="p">,</span> <span class="n">legend</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">palette</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]</span> <span class="o">=</span> <span class="n"><span title="implicit_word_network.visualization.CATEGORICAL_PALETTE">CATEGORICAL_PALETTE</span></span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">output_path</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="typing.Any">Any</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents first">
 
         <p>Draw the entity layer of a network with matplotlib.</p>
-<p>Node sizes scale with mention counts, edge widths with edge weights and
-node colours encode entity types.</p>
+<p>Node area scales with the number of mentions, edge width and opacity with
+the edge weight, and node colour encodes the entity type (fixed hue per
+type, listed in a legend). Labels are set in text ink with a surface halo
+and nudged apart so they do not overlap. Isolated entities are not drawn.</p>
 
 
 <table>
@@ -1169,8 +1171,8 @@ node colours encode entity types.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>An <code>ImplicitNetwork</code>
-or a graph produced by <code>to_networkx</code>.</p>
+                <p>An <code>ImplicitNetwork</code> or a graph produced by <code>to_networkx</code>
+(node attributes <code>text</code>, <code>label</code>, <code>count</code>; edge <code>weight</code>).</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -1206,7 +1208,8 @@ or a graph produced by <code>to_networkx</code>.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Keep only the heaviest <code>top_k</code> edges (networks only).</p>
+                <p>Keep only the heaviest <code>top_k</code> edges (networks only; <code>None</code>
+keeps all).</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -1216,6 +1219,68 @@ or a graph produced by <code>to_networkx</code>.</p>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
                       <code>100</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Restrict to these entity types (networks only).</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="collections.abc.Sequence">Sequence</span>[<span title="str">str</span>] | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>label_order</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Entity types in the order they take palette slots.
+Defaults to types sorted by total mentions (most frequent first).</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="collections.abc.Sequence">Sequence</span>[<span title="str">str</span>] | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>min_component_size</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Drop connected components with fewer nodes, so
+small satellites do not squeeze the main network into a corner.</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="int">int</span></code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>1</code>
                   </span>
               </p>
             </td>
@@ -1282,40 +1347,40 @@ or a graph produced by <code>to_networkx</code>.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>node_scale</code>
+                <code>node_size</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Node size per mention.</p>
+                <p>Minimum and maximum node area in points².</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><span title="float">float</span></code>
+                      <code><span title="tuple">tuple</span>[<span title="float">float</span>, <span title="float">float</span>]</code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
-                      <code>120.0</code>
+                      <code>(90.0, 1100.0)</code>
                   </span>
               </p>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>edge_scale</code>
+                <code>edge_width</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Edge width per unit of weight.</p>
+                <p>Minimum and maximum edge width in points.</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><span title="float">float</span></code>
+                      <code><span title="tuple">tuple</span>[<span title="float">float</span>, <span title="float">float</span>]</code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
-                      <code>2.0</code>
+                      <code>(0.6, 5.5)</code>
                   </span>
               </p>
             </td>
@@ -1342,20 +1407,100 @@ or a graph produced by <code>to_networkx</code>.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>font_size</code>
+                <code>max_labels</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Label font size.</p>
+                <p>Label only the <code>max_labels</code> most mentioned entities.</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><span title="int">int</span></code>
+                      <code><span title="int">int</span> | None</code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
-                      <code>8</code>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>font_size</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Label font size in points.</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="float">float</span></code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>8.5</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>legend</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Show the entity-type legend.</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="bool">bool</span></code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>True</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>palette</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Categorical colours, assigned to types in <code>label_order</code>.</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="collections.abc.Sequence">Sequence</span>[<span title="str">str</span>]</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code><span title="implicit_word_network.visualization.CATEGORICAL_PALETTE">CATEGORICAL_PALETTE</span></code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>title</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Optional figure title.</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="str">str</span> | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
                   </span>
               </p>
             </td>
