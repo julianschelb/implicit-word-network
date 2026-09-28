@@ -17,6 +17,11 @@ on:
     types: [completed]
     branches: [main, master]
   workflow_dispatch:
+    inputs:
+      publish_current:
+        description: "Publish the checked-out version as-is (no bump); needs a matching vX.Y.Z tag"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -29,7 +34,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     concurrency: release
     outputs:
-      released: ${{ steps.semrel.outputs.released }}
+      released: ${{ steps.flag.outputs.released }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,6 +50,7 @@ jobs:
 
       - name: Run semantic-release
         id: semrel
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.publish_current) }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -57,8 +63,25 @@ jobs:
             echo "released=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Build the current version (manual publish, no bump)
+        id: manual
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_current }}
+        run: |
+          VERSION=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
+          if ! git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
+            echo "Tag v$VERSION does not exist; tag the release first" >&2
+            exit 1
+          fi
+          pip install build
+          python -m build
+          echo "released=true" >> "$GITHUB_OUTPUT"
+
+      - name: Resolve release flag
+        id: flag
+        run: echo "released=${{ steps.semrel.outputs.released || steps.manual.outputs.released || 'false' }}" >> "$GITHUB_OUTPUT"
+
       - name: Check distribution
-        if: steps.semrel.outputs.released == 'true'
+        if: steps.flag.outputs.released == 'true'
         run: |
           pip install twine
           twine check dist/*
@@ -70,7 +93,7 @@ jobs:
         run: semantic-release publish
 
       - name: Upload dist artifacts
-        if: steps.semrel.outputs.released == 'true'
+        if: steps.flag.outputs.released == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: dist

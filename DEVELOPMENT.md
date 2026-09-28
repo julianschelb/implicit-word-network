@@ -132,6 +132,15 @@ One-time setup on PyPI (project → Publishing → add a trusted publisher):
 owner `julianschelb`, repository `implicit-word-network`, workflow
 `release.yml`, environment `pypi`.
 
+### Publishing an already tagged version
+
+`semantic-release` only publishes versions it bumps itself. To publish the
+currently tagged version (for example the initial `v0.1.0` once the PyPI
+trusted publisher is registered), run the **Release** workflow by hand:
+Actions → Release → *Run workflow* → tick **publish_current**. The workflow
+builds the checked-out version, verifies that the matching tag exists and
+publishes it through the `pypi` environment.
+
 ### Manual Version Check
 
 ```bash
