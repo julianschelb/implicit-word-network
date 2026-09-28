@@ -27,7 +27,13 @@ class TestToNetworkx:
         assert graph.graph["window"] == 2
         feynman = network.entity("Feynman", "PERSON")
         node = graph.nodes[entity_node_id(feynman)]
-        assert node == {"kind": "entity", "text": "Feynman", "label": "PERSON", "count": 2}
+        assert node == {
+            "kind": "entity",
+            "text": "Feynman",
+            "norm": "feynman",
+            "label": "PERSON",
+            "count": 2,
+        }
         for u, v, data in graph.edges(data=True):
             assert data["kind"] == "entity-entity" and data["weight"] > 0 and data["count"] >= 1
 

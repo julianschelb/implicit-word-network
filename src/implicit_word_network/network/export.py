@@ -39,7 +39,7 @@ def to_networkx(
 ) -> nx.Graph:
     """Convert the entity layer of a network into a ``networkx.Graph``.
 
-    Entity nodes carry ``kind="entity"``, ``text``, ``label`` and ``count``
+    Entity nodes carry ``kind="entity"``, ``text``, ``norm``, ``label`` and ``count``
     attributes; edges carry ``weight`` and ``count``. Optionally, term nodes
     (``kind="term"``) are attached to entities with ``weight`` equal to the
     number of shared sentences.
@@ -64,7 +64,12 @@ def to_networkx(
     entities = [e for e in network.entities() if allowed is None or e.label in allowed]
     for node in entities:
         graph.add_node(
-            entity_node_id(node), kind="entity", text=node.text, label=node.label, count=node.count
+            entity_node_id(node),
+            kind="entity",
+            text=node.text,
+            norm=node.norm,
+            label=node.label,
+            count=node.count,
         )
     for edge in network.edges(min_weight=min_weight, top_k=top_k, labels=labels):
         graph.add_edge(

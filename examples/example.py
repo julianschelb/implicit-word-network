@@ -17,7 +17,9 @@ from implicit_word_network import (
 corpus = load_example_corpus()
 
 # Entity types to keep and context window (in sentences)
-extractor = SpacyEntityExtractor("en_core_web_sm", labels=["PERSON", "LOC", "GPE", "NORP", "ORG", "WORK_OF_ART"])
+extractor = SpacyEntityExtractor(
+    "en_core_web_sm", labels=["PERSON", "LOC", "GPE", "NORP", "ORG", "WORK_OF_ART"]
+)
 pipeline = ImplicitNetworkPipeline(extractor, window=2)
 
 # Building the network
@@ -26,7 +28,9 @@ print(network.summary())
 
 # Strongest relations
 for edge in network.edges(top_k=10):
-    print(f"{edge.weight:6.2f}  {edge.source.text} [{edge.source.label}] -- {edge.target.text} [{edge.target.label}]")
+    print(
+        f"{edge.weight:6.2f}  {edge.source.text} [{edge.source.label}] -- {edge.target.text} [{edge.target.label}]"
+    )
 
 # Provenance: where do two entities cooccur?
 feynman = network.entity("Feynman", "PERSON")

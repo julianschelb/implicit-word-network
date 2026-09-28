@@ -25,6 +25,9 @@ Complete rewrite of the package as a typed, modular library.
 - Export to NetworkX, JSON, edge lists, pandas and GraphML/GEXF; persistence
   with `save` / `load`.
 - Command-line interface `implicit-word-network build|summary`.
+- `plot_network` with a colour-vision-safe categorical palette, legend,
+  weight-scaled edges, halo labels with overlap avoidance and component
+  filtering.
 - Configurable decay functions (`exponential`, `constant`, `inverse`,
   `linear`, custom via `register_decay`).
 - LOAD importance weights (`load_weight`, `load_weight_matrix`,

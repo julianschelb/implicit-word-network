@@ -6,6 +6,7 @@ All examples live in the [`examples/`](https://github.com/julianschelb/implicit-
 |---|---|---|
 | [`example.ipynb`](https://github.com/julianschelb/implicit-word-network/blob/main/examples/example.ipynb) | Executed notebook: extraction, network construction, exploration, LOAD/EVELIN ranking, CIEN edge clustering, export | none (offline gazetteer) |
 | [`example.py`](https://github.com/julianschelb/implicit-word-network/blob/main/examples/example.py) | End-to-end script with spaCy NER, provenance, clustering and plotting | `spacy` extra + `en_core_web_sm`, `viz` extra for the plot |
+| [`example_plot.py`](https://github.com/julianschelb/implicit-word-network/blob/main/examples/example_plot.py) | Renders the documentation figure: curated gazetteer with alias merging, `plot_network` with legend and label placement | `viz` extra |
 | [`example_gliner.py`](https://github.com/julianschelb/implicit-word-network/blob/main/examples/example_gliner.py) | Zero-shot entity types with GLiNER v2.5 | `gliner` extra (downloads a checkpoint) |
 | [`example_data.csv`](https://github.com/julianschelb/implicit-word-network/blob/main/examples/example_data.csv) | The bundled example corpus (also available via `load_example_corpus()`) | |
 

@@ -14,6 +14,8 @@ exploration tools such as [ECCE](https://doi.org/10.1145/3487553.3524237).
 
 Documentation: <https://julianschelb.github.io/implicit-word-network/>
 
+![Entity network extracted from the bundled example corpus](docs/assets/example-network.png)
+
 ## Features
 
 - **Pluggable entity extraction** – spaCy NER, zero-shot NER with
